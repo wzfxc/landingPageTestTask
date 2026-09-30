@@ -1,0 +1,9 @@
+// ============================================================
+// BYTEEX Landing Page — Main SCSS Entry Point
+// ============================================================
+// Global foundations (tokens + reset) — imported once at app root.
+// Component-level SCSS is co-located and imported by each component.
+// ============================================================
+
+@use 'variables' as *;
+@use 'base';

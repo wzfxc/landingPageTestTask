@@ -1,4 +1,5 @@
 import React from 'react';
+import './AnnouncementBar.scss';
 
 function AnnouncementBar({ data }) {
   return (

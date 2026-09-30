@@ -1,4 +1,5 @@
 import React from 'react';
+import './IconPlaceholder.scss';
 
 /**
  * Inline SVG icon placeholders — small, semantic icons that

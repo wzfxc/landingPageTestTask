@@ -1,9 +1,9 @@
 import React from 'react';
-import AnnouncementBar from './components/AnnouncementBar';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import AsSeenIn from './components/AsSeenIn';
-import Benefits from './components/Benefits';
+import AnnouncementBar from './components/AnnouncementBar/AnnouncementBar';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import AsSeenIn from './components/AsSeenIn/AsSeenIn';
+import Benefits from './components/Benefits/Benefits';
 import useHeroContent from './hooks/useHeroContent';
 import {
   announcementBarData,

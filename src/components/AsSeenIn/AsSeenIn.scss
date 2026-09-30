@@ -1,0 +1,81 @@
+// ============================================================
+// AsSeenIn — Component Styles (BEM)
+// ============================================================
+@use '../../styles/variables' as *;
+
+.as-seen-in {
+  // Gradient from accent-bg to white for seamless flow into Benefits
+  background: linear-gradient(to bottom,
+      $color-accent-bg 0%,
+      $color-white 100%);
+  padding: 32px $gutter 48px;
+  // No borders — seamless transition
+
+  @media (min-width: $bp-tablet) {
+    padding: 40px $gutter 56px;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 48px $gutter 64px;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__label {
+    font-family: $font-family-main;
+    font-style: italic;
+    font-size: 0.875rem;
+    color: $color-text-muted;
+    margin-bottom: 24px;
+
+    @media (min-width: $bp-tablet) {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px 32px;
+
+    @media (min-width: $bp-tablet) {
+      gap: 20px 48px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      gap: 20px 64px;
+    }
+  }
+
+  &__logo-item {
+    flex-shrink: 0;
+  }
+
+  &__logo-image {
+    height: 32px;
+    width: auto;
+    display: block;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+    filter: grayscale(100%);
+
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    @media (min-width: $bp-tablet) {
+      height: 44px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      height: 56px;
+    }
+  }
+}

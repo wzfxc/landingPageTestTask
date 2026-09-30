@@ -1,4 +1,5 @@
 import React from 'react';
+import './AsSeenIn.scss';
 
 function AsSeenIn({ data }) {
   return (

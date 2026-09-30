@@ -1,0 +1,27 @@
+// ============================================================
+// Design Tokens / Variables (Figma Exact)
+// ============================================================
+@use 'sass:color';
+
+// Colors
+$color-primary-dark: #01005B; // Main headings, button backgrounds, logo
+$color-accent-bg: #F9F0E5; // Background blocks, cards, gradient color
+$color-text-muted: #676869; // Secondary text / paragraphs
+$color-white: #FFFFFF;
+$color-off-white: #FAF7F3;
+$color-border: #E8E2DA;
+$color-bg-light: #F5F0EB;
+$color-star: #F5A623;
+
+// Typography — Sofia Pro (commercial), falls back to Sofia Sans (Google Fonts)
+$font-family-main: 'Sofia Pro', 'Sofia Sans', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Roboto, sans-serif;
+
+// Breakpoints
+$bp-tablet: 768px;
+$bp-desktop: 1080px;
+$bp-wide: 1320px;
+
+// Layout
+$container-max: 1240px;
+$gutter: 20px;

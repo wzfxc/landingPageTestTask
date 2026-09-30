@@ -1,0 +1,38 @@
+// ============================================================
+// Header — Component Styles (BEM)
+// ============================================================
+@use '../../styles/variables' as *;
+
+.header {
+  background-color: $color-white;
+  padding: 16px $gutter;
+
+  @media (min-width: $bp-tablet) {
+    padding: 20px $gutter;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__logo-image {
+    height: 28px;
+    width: auto;
+    display: block;
+
+    @media (min-width: $bp-tablet) {
+      height: 32px;
+    }
+  }
+}

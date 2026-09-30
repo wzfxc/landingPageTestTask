@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import './Benefits.scss';
 
 function Benefits({ data }) {
   const [activeIndex, setActiveIndex] = useState(0);
