@@ -1,0 +1,304 @@
+// ============================================================
+// Final CTA — Component Styles (BEM)
+// ============================================================
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.final-cta {
+  background-color: $color-white;
+  padding: 60px 0 0;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: $bp-tablet) {
+    padding: 80px 0 0;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 100px 0 0;
+  }
+
+  // Subtle bottom gradient
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background: linear-gradient(to bottom, transparent, rgba($color-accent-bg, 0.5));
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: 0 $gutter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  // -------- Top Text --------
+  &__header {
+    text-align: center;
+    max-width: 720px;
+    margin-bottom: 32px;
+
+    @media (min-width: $bp-desktop) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-main;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: $color-primary-dark;
+    margin-bottom: 16px;
+
+    @media (min-width: $bp-tablet) {
+      font-size: 34px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 40px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__description {
+    font-family: $font-family-main;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-text-muted;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 16px;
+    }
+  }
+
+  // -------- Collage --------
+  &__collage {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 250px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    @media (min-width: $bp-tablet) {
+      height: 350px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      height: 420px;
+      margin-bottom: 56px;
+    }
+
+    // Beige horizontal bar behind images
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      max-width: 1000px;
+      height: 60%;
+      background-color: rgba($color-accent-bg, 0.4);
+      z-index: 0;
+    }
+  }
+
+  &__image-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--1 { // Left
+      left: 10%;
+      width: 30%;
+      z-index: 1;
+
+      @media (max-width: $bp-tablet) {
+        left: 0;
+        width: 35%;
+      }
+    }
+
+    &--2 { // Center
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 35%;
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 4px solid transparent; // just to match aspect ratio styling if needed
+      // Note: The screenshot has a blue border #0084FF around the center image, 
+      // but that looks like a Figma selection outline. I won't add a real blue border.
+
+      @media (max-width: $bp-tablet) {
+        width: 45%;
+      }
+    }
+
+    &--3 { // Right
+      right: 10%;
+      width: 30%;
+      z-index: 1;
+
+      @media (max-width: $bp-tablet) {
+        right: 0;
+        width: 35%;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    background-color: #eee;
+  }
+
+  // -------- Action Area --------
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+
+    .cta-button-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+
+      @media (min-width: $bp-tablet) {
+        width: auto;
+      }
+    }
+    
+    .cta-snippet {
+      text-align: center;
+    }
+  }
+
+  &__payments {
+    display: none; // Hidden on mobile as requested
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    
+    @media (min-width: $bp-tablet) {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    }
+  }
+
+  &__payments-text {
+    font-family: $font-family-main;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4CAF50; // Greenish color from screenshot
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &::before {
+      content: '⏱'; // A quick mock clock icon since we don't have the SVG path
+      font-size: 14px;
+    }
+  }
+
+  &__payments-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 20px;
+      width: auto;
+      
+      @media (min-width: $bp-tablet) {
+        height: 24px;
+      }
+    }
+  }
+
+  // -------- Trust Badges --------
+  &__trust {
+    display: none; // Hidden on mobile as requested
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 16px;
+    border-top: 1px solid rgba($color-border, 0.5);
+    padding-top: 24px;
+    padding-bottom: 32px;
+
+    @media (min-width: $bp-tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+  }
+
+  &__trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px; // Reduced gap between icon and text
+    
+    @media (min-width: $bp-tablet) {
+      flex: 1;
+      justify-content: center;
+      
+      &:not(:last-child) {
+        border-right: 1px solid rgba($color-border, 0.5);
+      }
+    }
+  }
+
+  &__trust-icon {
+    flex-shrink: 0;
+
+    img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+  }
+
+  &__trust-text {
+    font-family: $font-family-main;
+    font-size: 13px;
+    line-height: 1.4;
+    color: $color-text-muted;
+    max-width: 160px;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 14px;
+    }
+  }
+}

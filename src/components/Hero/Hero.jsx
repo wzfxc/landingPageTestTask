@@ -1,4 +1,5 @@
 import React from 'react';
+import CtaButton from '../ui/CtaButton/CtaButton';
 import './Hero.scss';
 
 function Hero({ data }) {
@@ -22,10 +23,9 @@ function Hero({ data }) {
             ))}
           </ul>
 
-          <a href="#customize" className="hero__cta">
-            <span className="hero__cta-label">{data.ctaLabel}</span>
-            <span className="hero__cta-arrow" aria-hidden="true">→</span>
-          </a>
+          <div className="hero__cta-wrapper">
+            <CtaButton label={data.ctaLabel} href="#customize" />
+          </div>
 
           {/* Testimonial card */}
           <div className="hero__testimonial">

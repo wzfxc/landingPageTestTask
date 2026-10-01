@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import CtaButton from '../ui/CtaButton/CtaButton';
 import './Benefits.scss';
 
 function Benefits({ data }) {
@@ -43,6 +44,10 @@ function Benefits({ data }) {
               </li>
             ))}
           </ul>
+
+          <div className="benefits__cta-wrapper">
+            <CtaButton label="Customize Your Outfit" href="#customize" showSnippet={true} />
+          </div>
         </div>
 
         {/* Right column — product carousel */}

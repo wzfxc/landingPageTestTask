@@ -3,31 +3,26 @@ import AnnouncementBar from './components/AnnouncementBar/AnnouncementBar';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import AsSeenIn from './components/AsSeenIn/AsSeenIn';
+import InfoBanner from './components/InfoBanner/InfoBanner';
 import Benefits from './components/Benefits/Benefits';
-import useHeroContent from './hooks/useHeroContent';
+import BeYourBestSelf from './components/BeYourBestSelf/BeYourBestSelf';
+import HowToOrder from './components/HowToOrder/HowToOrder';
+import Reviews from './components/Reviews/Reviews';
+import Faq from './components/Faq/Faq';
+import FinalCta from './components/FinalCta/FinalCta';
+import useCmsContent from './hooks/useCmsContent';
 import {
   announcementBarData,
   headerData,
   asSeenInData,
-  benefitsData,
+  infoBannerData,
+  howToOrderData,
+  reviewsData,
 } from './data/mockData';
 
 function App() {
-  // CMS-driven data (falls back to mock if Contentful is unavailable)
-  const { heroData, isLoading, error } = useHeroContent();
-
-  // Merge the fetched hero images into benefits data so they stay in sync
-  const mergedBenefitsData = {
-    ...benefitsData,
-    carousel: {
-      ...benefitsData.carousel,
-      images: benefitsData.carousel.images.map((img, index) => ({
-        ...img,
-        src: heroData.images[index]?.src || img.src,
-        alt: heroData.images[index]?.alt || img.alt,
-      }))
-    }
-  };
+  // CMS-driven data (falls back to mocks if Contentful is unavailable)
+  const { heroData, benefitsData, beYourBestSelfData, faqData, finalCtaData } = useCmsContent();
 
   return (
     <>
@@ -35,14 +30,20 @@ function App() {
       <Header data={headerData} />
       <main>
         {/*
-          Hero stays "dumb" — it receives the same prop shape whether
-          data comes from Contentful or from the local mock.
-          We show mock data immediately (no loading spinner) because
-          the hook initialises state with the mock fallback.
+          Both Hero and Benefits stay "dumb" — they receive the same prop
+          shape whether data comes from Contentful or from the local mock.
+          We show mock data immediately (no loading spinner) because the
+          hook initialises state with mock fallbacks.
         */}
         <Hero data={heroData} />
         <AsSeenIn data={asSeenInData} />
-        <Benefits data={mergedBenefitsData} />
+        <Benefits data={benefitsData} />
+        <BeYourBestSelf data={beYourBestSelfData} />
+        <HowToOrder data={howToOrderData} />
+        <Reviews data={reviewsData} />
+        <Faq data={faqData} />
+        <InfoBanner data={infoBannerData} />
+        <FinalCta data={finalCtaData} />
       </main>
     </>
   );

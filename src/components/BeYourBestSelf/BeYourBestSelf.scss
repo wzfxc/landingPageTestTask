@@ -1,0 +1,197 @@
+// ============================================================
+// BeYourBestSelf — Component Styles (BEM)
+// ============================================================
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.be-your-best-self {
+  background-color: $color-bg-light;
+  padding: 56px $gutter 64px;
+
+  @media (min-width: $bp-tablet) {
+    padding: 72px $gutter 80px;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 96px $gutter 112px;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @media (min-width: $bp-desktop) {
+      flex-direction: row;
+      align-items: center;
+      gap: 80px;
+    }
+  }
+
+  // -------- Left column (Collage) --------
+  &__collage {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; // padding to allow space for absolute positioned images
+
+    @media (min-width: $bp-desktop) {
+      flex: 0 1 50%;
+      margin: 0;
+      padding: 60px 40px;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    // Middle large image
+    &--2 {
+      position: relative;
+      z-index: 2;
+      width: 60%;
+      max-width: 280px;
+
+      @media (min-width: $bp-desktop) {
+        width: 340px;
+        max-width: none;
+      }
+    }
+
+    // Top left overlapping image
+    &--1 {
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 5%;
+      width: 35%;
+      max-width: 140px;
+
+      @media (min-width: $bp-desktop) {
+        top: -20px;
+        left: -40px;
+        width: 170px;
+        max-width: none;
+      }
+    }
+
+    // Bottom right overlapping image
+    &--3 {
+      position: absolute;
+      z-index: 3;
+      bottom: -10%;
+      right: 5%;
+      width: 32%;
+      max-width: 130px;
+
+      @media (min-width: $bp-desktop) {
+        bottom: -40px;
+        right: -30px;
+        width: 150px;
+        max-width: none;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      border: 6px solid $color-bg-light; // Creates the white/border effect around overlapping images
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+
+  // -------- Right column (Content) --------
+  &__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $bp-tablet) {
+      align-items: flex-start;
+    }
+
+    @media (min-width: $bp-desktop) {
+      flex: 0 1 50%;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-main;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: $color-primary-dark;
+
+    &--mobile {
+      display: block;
+      text-align: center;
+      margin-bottom: 0; // margin handled by container gap
+      padding: 0 16px; // match paragraph padding
+
+      @media (min-width: $bp-tablet) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @media (min-width: $bp-tablet) {
+        display: block;
+        margin-bottom: 24px;
+        font-size: 34px;
+        text-align: left;
+      }
+
+      @media (min-width: $bp-desktop) {
+        font-size: 38px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 0 16px;
+    text-align: left;
+
+    @media (min-width: $bp-tablet) {
+      padding: 0;
+      text-align: left;
+    }
+
+    p {
+      font-family: $font-family-main;
+      font-size: 14px;
+      line-height: 1.6;
+      color: $color-text-muted;
+
+      @media (min-width: $bp-desktop) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  &__cta {
+    display: none; // Hidden on mobile
+
+    @media (min-width: $bp-tablet) {
+      display: block;
+    }
+  }
+}

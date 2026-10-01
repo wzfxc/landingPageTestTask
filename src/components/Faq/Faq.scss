@@ -1,0 +1,326 @@
+// ============================================================
+// FAQ — Component Styles (BEM)
+// ============================================================
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.faq {
+  background-color: $color-white;
+  padding: 64px $gutter;
+  overflow-x: hidden; // Strictly prevent horizontal bleed
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: $bp-tablet) {
+    padding: 80px $gutter;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 112px $gutter;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @media (min-width: $bp-desktop) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 80px;
+    }
+  }
+
+  // -------- Left column (Accordion) --------
+  &__content {
+    flex: 1;
+    min-width: 0;
+
+    @media (min-width: $bp-desktop) {
+      flex: 0 1 50%;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-main;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: $color-primary-dark;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media (min-width: $bp-tablet) {
+      font-size: 34px;
+      text-align: left;
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 38px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    border-top: 1px solid $color-border;
+    
+    &:last-child {
+      border-bottom: 1px solid $color-border;
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: $color-primary-dark;
+    font-family: $font-family-main;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: color.adjust($color-primary-dark, $lightness: 20%);
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 18px;
+      padding: 28px 0;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 300;
+    margin-left: 16px;
+    color: $color-primary-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    // Horizontal line (-)
+    &::before {
+      width: 16px;
+      height: 2px;
+    }
+
+    // Vertical line (|)
+    &::after {
+      width: 2px;
+      height: 16px;
+    }
+
+    &--active {
+      &::after {
+        transform: rotate(90deg); // Turns + into -
+        opacity: 0; // Hides the vertical line
+      }
+    }
+  }
+
+  &__answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+
+    &--open {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__answer {
+    overflow: hidden;
+  }
+
+  &__answer-text {
+    padding-bottom: 24px;
+    font-family: $font-family-main;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-text-muted;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    .faq__answer-wrapper--open & {
+      opacity: 1;
+      transition-delay: 0.1s; // wait for height transition to start
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 15px;
+      padding-bottom: 28px;
+    }
+  }
+
+
+  // -------- Right column (Collage) --------
+  &__collage {
+    display: none; // Hidden on mobile as requested
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; // Less padding on mobile to save space
+    box-sizing: border-box;
+
+    @media (min-width: $bp-tablet) {
+      display: flex;
+      max-width: 440px;
+      padding: 60px 20px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      flex: 0 1 50%;
+      margin: 0;
+      padding: 80px 40px;
+    }
+
+    // Decorative beige squares
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $color-accent-bg;
+      z-index: 0;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 40%;
+      
+      @media (min-width: $bp-tablet) {
+        top: 0;
+        left: -20px;
+        width: 160px;
+        height: 160px;
+      }
+      
+      @media (min-width: $bp-desktop) {
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+    &::after {
+      bottom: 0;
+      right: 0;
+      width: 35%;
+      height: 35%;
+      
+      @media (min-width: $bp-tablet) {
+        bottom: -20px;
+        right: 0;
+        width: 140px;
+        height: 160px;
+      }
+      
+      @media (min-width: $bp-desktop) {
+        width: 180px;
+        height: 200px;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    box-sizing: border-box;
+
+    // Image 1: Top Right (Woman stretching)
+    &--1 {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 5%;
+      width: 35%;
+      
+      @media (min-width: $bp-tablet) {
+        top: -30px;
+        right: -10px;
+        width: 150px;
+      }
+      
+      @media (min-width: $bp-desktop) {
+        top: -60px;
+        right: -30px;
+        width: 190px;
+      }
+    }
+    
+    // Image 2: Center Large (Woman in gray)
+    &--2 {
+      position: relative;
+      z-index: 2;
+      width: 60%;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      
+      @media (min-width: $bp-tablet) {
+        width: 220px;
+      }
+      
+      @media (min-width: $bp-desktop) {
+        width: 280px;
+      }
+    }
+
+    // Image 3: Bottom Left (Woman reading)
+    &--3 {
+      position: absolute;
+      z-index: 3;
+      bottom: 0;
+      left: 5%;
+      width: 32%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      
+      @media (min-width: $bp-tablet) {
+        bottom: -20px;
+        left: -10px;
+        width: 130px;
+      }
+      
+      @media (min-width: $bp-desktop) {
+        bottom: -30px;
+        left: -40px;
+        width: 160px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      background-color: #eee; // Fallback placeholder color
+    }
+  }
+}

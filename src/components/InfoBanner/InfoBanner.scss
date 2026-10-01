@@ -1,0 +1,130 @@
+// ============================================================
+// Info Banner — Component Styles (BEM)
+// ============================================================
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.info-banner {
+  background-color: #F6F6F6; // Light gray background
+  padding: 64px $gutter;
+
+  @media (min-width: $bp-tablet) {
+    padding: 80px $gutter;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 100px $gutter;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $font-family-main;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: $color-primary-dark;
+    margin-bottom: 48px;
+
+    @media (min-width: $bp-tablet) {
+      font-size: 28px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 32px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (min-width: $bp-tablet) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    @media (min-width: $bp-tablet) {
+      flex: 1;
+      max-width: 320px;
+      
+      // Vertical divider
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 10%;
+        bottom: 10%;
+        width: 1px;
+        background-color: rgba($color-primary-dark, 0.1);
+      }
+    }
+    
+    // Horizontal divider for mobile
+    @media (max-width: ($bp-tablet - 1px)) {
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 20%;
+        right: 20%;
+        height: 1px;
+        background-color: rgba($color-primary-dark, 0.1);
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba($color-primary-dark, 0.05); // Subtle dark gray/blue
+    margin-bottom: 24px;
+    
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__value {
+    font-family: $font-family-main;
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-primary-dark;
+    margin-bottom: 8px;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 28px;
+    }
+  }
+
+  &__label {
+    font-family: $font-family-main;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-text-muted;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 15px;
+    }
+  }
+}

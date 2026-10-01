@@ -1,0 +1,200 @@
+// ============================================================
+// HowToOrder — Component Styles (BEM)
+// ============================================================
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.how-to-order {
+  background-color: $color-white;
+  padding: 64px $gutter;
+
+  @media (min-width: $bp-tablet) {
+    padding: 80px $gutter;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 112px $gutter;
+  }
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: $font-family-main;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: $color-primary-dark;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media (min-width: $bp-tablet) {
+      font-size: 34px;
+      margin-bottom: 56px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 38px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__carousel-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 48px;
+
+    @media (min-width: $bp-tablet) {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__nav-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: $color-primary-dark;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: opacity 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @media (min-width: $bp-tablet) {
+      display: none;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari and Opera
+    }
+
+    @media (min-width: $bp-tablet) {
+      justify-content: center;
+      align-items: stretch;
+      gap: 32px;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+  }
+
+  &__card {
+    scroll-snap-align: center;
+    flex: 0 0 100%; // Each card takes full width of container on mobile
+    
+    background-color: #F4F4F5; // Light gray for regular cards
+    border-radius: 8px;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &--highlighted {
+      background-color: $color-accent-bg; // Warm beige for middle card
+    }
+
+    @media (min-width: $bp-tablet) {
+      flex: 1;
+      min-width: 0; // Reset min-width for grid layout
+    }
+
+    @media (min-width: $bp-desktop) {
+      padding: 56px 32px;
+    }
+  }
+
+  &__card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-primary-dark;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__card-title {
+    font-family: $font-family-main;
+    font-size: 20px;
+    font-weight: 500;
+    color: $color-primary-dark;
+    margin-bottom: 16px;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 22px;
+    }
+  }
+
+  &__card-description {
+    font-family: $font-family-main;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-text-muted;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 15px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    // CTA button modifications
+    .cta-button-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+
+      @media (min-width: $bp-tablet) {
+        width: auto;
+      }
+    }
+    
+    .cta-snippet {
+      text-align: center;
+    }
+  }
+}
